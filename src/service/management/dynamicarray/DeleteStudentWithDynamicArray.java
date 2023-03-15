@@ -1,4 +1,4 @@
-package service.crud.dynamicarray;
+package service.management.dynamicarray;
 
 import model.Student;
 import java.util.List;

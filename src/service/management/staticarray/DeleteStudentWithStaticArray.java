@@ -1,4 +1,4 @@
-package service.crud.staticarray;
+package service.management.staticarray;
 
 import model.Student;
 

@@ -1,4 +1,4 @@
-package service.crud;
+package service.display;
 
 import model.AcademicAbility;
 import model.Student;

@@ -1,11 +1,11 @@
 package service.management;
 import model.Student;
-import service.crud.dynamicarray.DeleteStudentWithDynamicArray;
-import service.crud.dynamicarray.SearchStudentWithDynamicArray;
-import service.crud.dynamicarray.UpdateStudentWithDynamicArray;
-import service.crud.Display;
-import service.crud.staticarray.SearchStudentWithStaticArray;
-import service.crud.staticarray.UpdateStudentWithStaticArray;
+import service.management.dynamicarray.DeleteStudentWithDynamicArray;
+import service.management.dynamicarray.SearchStudentWithDynamicArray;
+import service.management.dynamicarray.UpdateStudentWithDynamicArray;
+import service.display.Display;
+import service.management.staticarray.SearchStudentWithStaticArray;
+import service.management.staticarray.UpdateStudentWithStaticArray;
 import service.handle.Input;
 import service.handle.WriteFile;
 
