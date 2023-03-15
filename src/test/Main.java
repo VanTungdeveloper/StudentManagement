@@ -1,13 +1,12 @@
 package test;
 import service.management.StudentManagement;
-import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         final int OPTION_EXIT = -1;
         Scanner sc = new Scanner(System.in);
-        Integer option;
+        int option;
         do{
             System.out.println("=======Menu Option========");
             System.out.println("=======1. Add student========");
@@ -71,7 +70,6 @@ public class Main {
                 }
                 default -> {
                     if (option == -1) return;
-
                     else throw new IllegalArgumentException("Option unexpected");
                 }
             }

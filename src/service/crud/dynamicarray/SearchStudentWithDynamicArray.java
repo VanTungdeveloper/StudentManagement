@@ -1,14 +1,10 @@
-package service.crud;
+package service.crud.dynamicarray;
 
 import model.Student;
 
-import java.util.*;
-
-public class SearchStudent {
-    private static final Scanner sc = new Scanner(System.in);
-    public static void withID(List<Student> studentList) {
-        System.out.print("Enter ID want to search: ");
-        int searchID = Integer.parseInt(sc.nextLine());
+import java.util.List;
+public class SearchStudentWithDynamicArray {
+    public static void withID(List<Student> studentList, int searchID) {
         int check = 0;
         for (Student student : studentList) {
             if (student.getId().equals(searchID)) {

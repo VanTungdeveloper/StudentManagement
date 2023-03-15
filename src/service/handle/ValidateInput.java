@@ -1,15 +1,12 @@
 package service.handle;
 
 import model.Student;
-
 import java.util.Date;
 import java.util.Scanner;
-
 import static constant.Constant.*;
 
 public class ValidateInput {
     private final static Scanner sc = new Scanner(System.in);
-
     // Name
     public static void name(Student student) {
         while (true) {

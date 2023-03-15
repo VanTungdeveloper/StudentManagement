@@ -1,36 +1,83 @@
 package service.management;
 import model.Student;
-import service.crud.DeleteStudent;
+import service.crud.dynamicarray.DeleteStudentWithDynamicArray;
+import service.crud.dynamicarray.SearchStudentWithDynamicArray;
+import service.crud.dynamicarray.UpdateStudentWithDynamicArray;
 import service.crud.Display;
-import service.crud.SearchStudent;
-import service.crud.UpdateStudent;
+import service.crud.staticarray.SearchStudentWithStaticArray;
+import service.crud.staticarray.UpdateStudentWithStaticArray;
 import service.handle.Input;
 import service.handle.WriteFile;
 
 import java.util.*;
 
 public class StudentManagement {
-    private final static List<Student> studentList = new ArrayList<>();
-
+    private static int index = 0;
+    private final static Scanner sc = new Scanner(System.in);
+    private final static int LENGTH_STUDENTS = 2;
+    private static Student[] students = new Student[LENGTH_STUDENTS];
+    private static List<Student> studentList = Arrays.asList(students);
+    private static void setIndex(int i) {
+        index = i;
+    }
     public static void add() {
-        Student student = new Student();
         System.out.println("Add new student!!!");
-        System.out.println("Enter the student information with ID: " + student.getId());
-        Input.informationStudent(student);
-        studentList.add(student);
-        System.out.println("Add student success!");
+        if(index < students.length) {
+            students[index] = new Student();
+            System.out.println("Enter the student information with ID: " + students[index].getId());
+            Input.informationStudent(students[index]);
+            setIndex(++index);
+            System.out.println("Add student success!");
+        }else{
+            System.out.println("Static Array is fullStack ----> Convert to Dynamic array");
+            Student student = new Student();
+            System.out.println("Enter the student information with ID: " + student.getId());
+            Input.informationStudent(students[index]);
+            studentList.add(students[index]);
+            setIndex(++index);
+        }
     }
 
     public static void search() {
-        SearchStudent.withID(studentList);
+        if(students[0] == null){
+            System.out.println("ListStudent is empty!");
+        }else{
+            System.out.print("Enter ID want to search: ");
+            int searchID = Integer.parseInt(sc.nextLine());
+            if(index < students.length){
+                SearchStudentWithStaticArray.withID(students, searchID);
+            }else{
+                SearchStudentWithDynamicArray.withID(studentList, searchID);
+            }
+        }
     }
 
     public static void update() {
-        UpdateStudent.withID(studentList);
+        if(students[0] == null){
+            System.out.println("ListStudent is empty!");
+        }else {
+            System.out.print("Enter ID want to update: ");
+            int searchIDUpdate = Integer.parseInt(sc.nextLine());
+            if(index < students.length){
+                UpdateStudentWithStaticArray.withID(students, searchIDUpdate);
+            }else{
+                UpdateStudentWithDynamicArray.withID(studentList, searchIDUpdate);
+            }
+        }
     }
 
     public static void delete() {
-        DeleteStudent.withID(studentList);
+        if(students[0] == null){
+            System.out.println("ListStudent is empty!");
+        }else {
+            System.out.print("Enter ID want to delete: ");
+            int searchIdDelete = Integer.parseInt(sc.nextLine());
+            if(index < students.length){
+                UpdateStudentWithStaticArray.withID(students, searchIdDelete);
+            }else{
+                DeleteStudentWithDynamicArray.withID(studentList, searchIdDelete);
+            }
+        }
     }
 
     public static void displayPercentAcademicAbility() {
@@ -42,7 +89,13 @@ public class StudentManagement {
     }
 
     public static void showListStudentAcademicAbility() {
-       Display.listStudentAccordingAcademicAbility(studentList);
+        if (studentList.get(0) == null) {
+            System.out.println("no list academicAbility no exist or empty!");
+        }else{
+            System.out.print("Enter academicAbility want to display(POOR, WEAK, AVERAGE, GOOD, GREAT, EXCELLENT): ");
+            String academicAbilityDisplay = sc.nextLine();
+            Display.listStudentAccordingAcademicAbility(studentList, academicAbilityDisplay);
+        }
     }
 
     public static void writeFile() {
@@ -54,9 +107,12 @@ public class StudentManagement {
         }
     }
     public static void showListStudent() {
-        System.out.println("List student: ");
-        for (Student student : studentList) {
-            System.out.println(student.toString());
+        if(students[0] == null) System.out.println("Array is empty!");
+        else{
+            System.out.println("List student: ");
+            for (Student student : students) {
+                System.out.println(student);
+            }
         }
     }
 

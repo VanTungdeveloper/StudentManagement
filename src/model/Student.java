@@ -11,6 +11,15 @@ public class Student extends Person {
         super();
     }
 
+    public Student(Integer id, String name, String birthDay, String address, Double height, Double weight, String studentID, String university, Integer universityStartYear, Double GPA, AcademicAbility academicAbility) {
+        super(id, name, birthDay, address, height, weight);
+        this.studentID = studentID;
+        this.university = university;
+        this.universityStartYear = universityStartYear;
+        this.GPA = GPA;
+        this.academicAbility = academicAbility;
+    }
+
     public String getStudentID() {
         return studentID;
     }

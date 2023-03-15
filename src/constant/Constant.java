@@ -10,7 +10,6 @@ public class Constant {
         public static final double MIN = 50;
         public static final double MAX = 300;
     }
-
     public static class Weight{
         public static final double MIN = 5;
         public static final double MAX = 1000;

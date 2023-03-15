@@ -12,7 +12,14 @@ public class Person {
         setId(++countId);
     }
 
-
+    public Person(Integer id, String name, String birthDay, String address, Double height, Double weight) {
+        this.id = id;
+        this.name = name;
+        this.birthDay = birthDay;
+        this.address = address;
+        this.height = height;
+        this.weight = weight;
+    }
 
     private void setId(int i) {
         this.id = i;
